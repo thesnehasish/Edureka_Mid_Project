@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   productapi:
-    image: ${DOCKER_REGISTRY-}productapi
+    image: productapi
     ports:
       - 40000:80
     build:
@@ -10,7 +10,7 @@ services:
       dockerfile: product/Dockerfile
 
   administratorapi:
-    image: ${DOCKER_REGISTRY-}administratorapi
+    image: administratorapi
     ports:
       - 40001:80
     build:
@@ -18,7 +18,7 @@ services:
       dockerfile: administrator/Dockerfile
       
   demandapi:
-    image: ${DOCKER_REGISTRY-}demandapi
+    image: demandapi
     ports:
       - 40002:80
     build:
