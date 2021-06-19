@@ -23,6 +23,7 @@ pipeline {
             steps{
                 sh(script: """
                 echo "I am here2"
+                rm -rf .git
                     git clone https://github.com/thesnehasish/Edureka_Mid_Project.git .
                 """, returnStdout: true) 
             }
