@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: administratorapi
-          image: administratorapp:latest
+          image: aws_account_id.dkr.ecr.region.amazonaws.com/administratorapp:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
