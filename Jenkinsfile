@@ -1,13 +1,13 @@
 pipeline {
    agent any
     environment{
-        AWS_ACCESS_KEY_ID     =''  
+        AWS_ACCESS_KEY_ID     ='AKIAZQGRZXSIH4WOM3XW'  
        //credentials('jenkins-aws-secret-key-id')
-        AWS_SECRET_ACCESS_KEY ='' 
+        AWS_SECRET_ACCESS_KEY ='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' 
        //credentials('jenkins-aws-secret-access-key')
-        AWS_DEFAULT_REGION ='' 
+        //AWS_DEFAULT_REGION ='us-east-1' 
        //credentials('jenkins-aws-default-region')       
-        AWS_ACCOUNT_ID= '' 
+        //AWS_ACCOUNT_ID= 'thesne' 
        //credentials('jenkins-aws-account-id')
     }
     stages {
