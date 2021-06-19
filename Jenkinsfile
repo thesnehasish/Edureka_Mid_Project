@@ -36,6 +36,7 @@ pipeline {
                echo "docker build"
                 sh script: '''
                 #!/bin/bash
+                echo $WORKSPACE
                 cd $WORKSPACE/backend
                 docker compose down --rmi "all"
                 docker compose up -d
