@@ -38,7 +38,7 @@ pipeline {
                 #!/bin/bash
                 echo $WORKSPACE
                 cd $WORKSPACE/Edureka_Mid_Project/backend               
-                sudo docker-compose up -d --force-recreate
+                sudo -S docker-compose up -d --force-recreate
                 # docker build . --network host -t aimvector/python:${BUILD_NUMBER}                
                 '''
             }
