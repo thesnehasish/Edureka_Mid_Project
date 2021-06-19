@@ -4,7 +4,7 @@ pipeline {
         AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
         AWS_DEFAULT_REGION = credentials('jenkins-aws-default-region')       
-        AWS_ACCOUNT_ID= credentials('jenkins-aws_account_id')
+        AWS_ACCOUNT_ID= credentials('jenkins-aws-account-id')
     }
     stages {
         stage('docker login') {
