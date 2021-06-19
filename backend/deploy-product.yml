@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: productapi
-          image: productapp:latest
+          image: aws_account_id.dkr.ecr.region.amazonaws.com/productapp:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
