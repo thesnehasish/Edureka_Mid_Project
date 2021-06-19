@@ -34,7 +34,7 @@ pipeline {
         stage('docker build') {
             steps{
                echo "docker build"
-               echo ${AWS_DEFAULT_REGION}
+               echo {$AWS_DEFAULT_REGION}
                 sh script: '''
                 #!/bin/bash
                 echo $WORKSPACE
