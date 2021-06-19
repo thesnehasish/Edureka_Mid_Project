@@ -5,7 +5,7 @@ pipeline {
        //credentials('jenkins-aws-secret-key-id')
         AWS_SECRET_ACCESS_KEY ='TTaXFFyFW1fhhYHoxZIPapNZuc9eWXPbvsE0WA7z' 
        //credentials('jenkins-aws-secret-access-key')
-        //AWS_DEFAULT_REGION ='us-east-1' 
+        AWS_DEFAULT_REGION ='us-east-1' 
        //credentials('jenkins-aws-default-region')       
         //AWS_ACCOUNT_ID= 'thesne' 
        //credentials('jenkins-aws-account-id')
@@ -34,10 +34,12 @@ pipeline {
         stage('docker build') {
             steps{
                echo "docker build"
+               echo $AWS_DEFAULT_REGION
                 sh script: '''
                 #!/bin/bash
                 echo $WORKSPACE
-                cd $WORKSPACE/Edureka_Mid_Project/backend               
+                cd $WORKSPACE/Edureka_Mid_Project/backend
+                docker-compose down --rmi "all"
                 docker-compose up -d
                 # docker build . --network host -t aimvector/python:${BUILD_NUMBER}                
                 '''
