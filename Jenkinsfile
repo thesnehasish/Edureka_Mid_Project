@@ -23,8 +23,7 @@ pipeline {
             steps{
                 sh(script: """
                 echo "I am here2"
-                zmodload zsh/files
-                rm -rf ..
+                rm -rf Edureka_Mid_Project
                 echo "I am here3"
                 git clone git@github.com:thesnehasish/Edureka_Mid_Project.git .
                 echo "I am here4"
