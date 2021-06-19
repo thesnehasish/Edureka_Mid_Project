@@ -10,7 +10,8 @@ pipeline {
         stage('docker login') {
             steps{
                 sh(script: """
-                  aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+                echo "I am here"
+                  #aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
                 """, returnStdout: true) 
             }
         }
@@ -18,6 +19,7 @@ pipeline {
         stage('git clone') {
             steps{
                 sh(script: """
+                echo "I am here2"
                     git clone https://github.com/thesnehasish/Edureka_Mid_Project.git
                 """, returnStdout: true) 
             }
