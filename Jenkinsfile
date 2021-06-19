@@ -37,7 +37,7 @@ pipeline {
                echo {$AWS_DEFAULT_REGION}
                 sh script: '''
                 #!/bin/bash
-                echo $WORKSPACE
+                echo "$WORKSPACE"
                 cd $WORKSPACE/Edureka_Mid_Project/backend
                 docker-compose down --rmi "all"
                 docker-compose up -d
