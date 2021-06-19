@@ -37,9 +37,8 @@ pipeline {
                 sh script: '''
                 #!/bin/bash
                 echo $WORKSPACE
-                cd $WORKSPACE/Edureka_Mid_Project/backend
-                docker-compose down --rmi "all"
-                docker-compose up -d
+                cd $WORKSPACE/Edureka_Mid_Project/backend               
+                docker compose up -d
                 # docker build . --network host -t aimvector/python:${BUILD_NUMBER}                
                 '''
             }
