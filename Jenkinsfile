@@ -31,19 +31,19 @@ pipeline {
 
         stage('docker build') {
             steps{
-                sh script: '''
+             /*   sh script: '''
                 #!/bin/bash
                 cd $WORKSPACE/backend
                 docker compose down --rmi "all"
                 docker compose up -d
                 # docker build . --network host -t aimvector/python:${BUILD_NUMBER}                
-                '''
+                '''*/
             }
         }
 
         stage('docker push') {
             steps{
-                sh(script: """
+             /*   sh(script: """
                     #docker push aimvector/python:${BUILD_NUMBER}
                 docker tag productapi:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/productapi:latest
                 docker tag administrator:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/administrator:latest
@@ -53,12 +53,13 @@ pipeline {
                 docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/administrator:latest
                 docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/demand:latest
                 """)
+                */
             }
         }
 
         stage('deploy') {
             steps{
-                sh script: '''
+              /*  sh script: '''
                 #!/bin/bash
                 #cd $WORKSPACE/docker-development-youtube-series/
                 #get kubectl for this demo
@@ -74,6 +75,7 @@ pipeline {
                 #kubectl apply -f deploy-demand.yml
                 #kubectl apply -f deploy-administrator.yml
                 '''
+                */
         }
     }
 }
