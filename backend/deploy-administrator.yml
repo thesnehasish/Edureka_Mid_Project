@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: administratorapi
+  labels:
+    app: administrator-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: administratorapi
+  template:
+    metadata:
+      labels:
+        app: administrator-api
+        service: administratorapi
+    spec:
+      containers:
+        - name: administratorapi
+          image: administratorapp:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: administratorapi
+  labels:
+    app: administrator-api
+    service: administratorapi
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    service: administratorapi

@@ -1,0 +1,27 @@
+version: '1.0'
+
+services:
+  productapi:
+    image: ${DOCKER_REGISTRY-}productapi
+    ports:
+      - 40000:80
+    build:
+      context: .
+      dockerfile: product/Dockerfile
+
+  administratorapi:
+    image: ${DOCKER_REGISTRY-}administratorapi
+    ports:
+      - 40001:80
+    build:
+      context: .
+      dockerfile: administrator/Dockerfile
+      
+  demandapi:
+    image: ${DOCKER_REGISTRY-}demandapi
+    ports:
+      - 40002:80
+    build:
+      context: .
+      dockerfile: demand/Dockerfile
+

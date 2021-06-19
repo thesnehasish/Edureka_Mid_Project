@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productapi
+  labels:
+    app: product-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: productapi
+  template:
+    metadata:
+      labels:
+        app: product-api
+        service: productapi
+    spec:
+      containers:
+        - name: productapi
+          image: productapp:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: productapi
+  labels:
+    app: product-api
+    service: productapi
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      nodePort: 30001
+  selector:
+    service: productapi
