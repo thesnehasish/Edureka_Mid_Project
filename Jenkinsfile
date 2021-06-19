@@ -31,13 +31,13 @@ pipeline {
         stage('docker build') {
             steps{
                echo "docker build"
-             /*   sh script: '''
+                sh script: '''
                 #!/bin/bash
                 cd $WORKSPACE/backend
                 docker compose down --rmi "all"
                 docker compose up -d
                 # docker build . --network host -t aimvector/python:${BUILD_NUMBER}                
-                '''*/
+                '''
             }
         }
 
