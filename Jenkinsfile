@@ -31,6 +31,7 @@ pipeline {
 
         stage('docker build') {
             steps{
+               echo "docker build"
              /*   sh script: '''
                 #!/bin/bash
                 cd $WORKSPACE/backend
@@ -43,6 +44,7 @@ pipeline {
 
         stage('docker push') {
             steps{
+               echo "docker push"
              /*   sh(script: """
                     #docker push aimvector/python:${BUILD_NUMBER}
                 docker tag productapi:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/productapi:latest
@@ -59,6 +61,7 @@ pipeline {
 
         stage('deploy') {
             steps{
+               echo "deploy"
               /*  sh script: '''
                 #!/bin/bash
                 #cd $WORKSPACE/docker-development-youtube-series/
