@@ -69,19 +69,19 @@ pipeline {
                echo "deploy"
               /*  sh script: '''
                 #!/bin/bash
-                #cd $WORKSPACE/docker-development-youtube-series/
+                cd $WORKSPACE/Edureka_Mid_Project//
                 #get kubectl for this demo
-                #curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-                #chmod +x ./kubectl
+                curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+                chmod +x ./kubectl
+                
                 #./kubectl apply -f ./kubernetes/configmaps/configmap.yaml
                 #./kubectl apply -f ./kubernetes/secrets/secret.yaml
                 #cat ./kubernetes/deployments/deployment.yaml | sed s/1.0.0/${BUILD_NUMBER}/g | ./kubectl apply -f -
-                #./kubectl apply -f ./kubernetes/services/service.yaml
+                #./kubectl apply -f ./kubernetes/services/service.yaml               
                 
-                #cd $WORKSPACE/backend
-                #kubectl apply -f deploy-product.yml
-                #kubectl apply -f deploy-demand.yml
-                #kubectl apply -f deploy-administrator.yml
+                ./kubectl apply -f ./backend/deploy-product.yml
+                ./kubectl apply -f ./backend/deploy-demand.yml
+                ./kubectl apply -f ./backend/deploy-administrator.yml
                 '''
                 */
         }
