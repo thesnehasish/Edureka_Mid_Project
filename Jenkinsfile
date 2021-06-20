@@ -50,17 +50,17 @@ pipeline {
         stage('docker push') {
             steps{
                echo "docker push"
-             /*   sh(script: """
-                    #docker push aimvector/python:${BUILD_NUMBER}
-                docker tag productapi:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/productapi:latest
-                docker tag administrator:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/administrator:latest
-                docker tag demand:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/demand:latest
+                sh(script: """
+                #docker push aimvector/python:${BUILD_NUMBER}
+                docker tag productapi:latest '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/productapi:latest
+                docker tag administrator:latest '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/administrator:latest
+                docker tag demand:latest '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/demand:latest
                 
-                docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/productapi:latest
-                docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/administrator:latest
-                docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/demand:latest
+                docker push '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/productapi:latest
+                docker push '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/administrator:latest
+                docker push '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/demand:latest
                 """)
-                */
+                
             }
         }
 
