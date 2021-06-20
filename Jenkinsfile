@@ -1,13 +1,13 @@
 pipeline {
    agent any
     environment{
-        AWS_ACCESS_KEY_ID     ='AKIAZQGRZXSIH4WOM3XW'  
+        AWS_ACCESS_KEY_ID     ='AKIAZQGRZXSIBLWEWZE6'  
        //credentials('jenkins-aws-secret-key-id')
-        AWS_SECRET_ACCESS_KEY ='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' 
+        AWS_SECRET_ACCESS_KEY ='FuKluGW4VZdHnmgltdCCaJJezE/ODCtHx+8PohBj' 
        //credentials('jenkins-aws-secret-access-key')
         AWS_DEFAULT_REGION ='us-east-1' 
        //credentials('jenkins-aws-default-region')       
-        AWS_ACCOUNT_ID= 'thesne' 
+        AWS_ACCOUNT_ID= '653275020432' 
        //credentials('jenkins-aws-account-id')
     }
     stages {
@@ -53,12 +53,12 @@ pipeline {
                 sh(script: """
                 #docker push aimvector/python:${BUILD_NUMBER}
                 docker tag productapi:latest '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/productapi:latest
-                docker tag administrator:latest '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/administrator:latest
-                docker tag demand:latest '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/demand:latest
+                docker tag administrator:latest '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/administratorapi:latest
+                docker tag demand:latest '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/demandapi:latest
                 
                 docker push '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/productapi:latest
-                docker push '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/administrator:latest
-                docker push '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/demand:latest
+                docker push '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/administratorapi:latest
+                docker push '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/demandapi:latest
                 """)
                 
             }
