@@ -7,14 +7,15 @@ pipeline {
        //credentials('jenkins-aws-secret-access-key')
         AWS_DEFAULT_REGION ='us-east-1' 
        //credentials('jenkins-aws-default-region')       
-        //AWS_ACCOUNT_ID= 'thesne' 
+        AWS_ACCOUNT_ID= 'thesne' 
        //credentials('jenkins-aws-account-id')
     }
     stages {
         stage('docker login') {
             steps{
                 sh(script: """
-                echo "I am here"                
+                echo "I am here" 
+                aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
                 """, returnStdout: true) 
             }
         }
