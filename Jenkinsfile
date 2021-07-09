@@ -13,8 +13,7 @@ pipeline {
     stages {
         stage('docker login') {
             steps{
-                sh(script: """
-                echo "I am here" 
+                sh(script: """                 
                 aws ecr get-login-password --region '$AWS_DEFAULT_REGION' | docker login --username AWS --password-stdin '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com
                 """, returnStdout: true) 
             }
@@ -23,11 +22,9 @@ pipeline {
         stage('git clone') {
             steps{
                 sh(script: """
-                echo "I am here2"
-                rm -rf Edureka_Mid_Project
-                echo "I am here3"
-                git clone https://github.com/thesnehasish/Edureka_Mid_Project.git
-                echo "I am here4"
+                #Remove old files and clone new files
+                rm -rf Edureka_Mid_Project                
+                git clone https://github.com/thesnehasish/Edureka_Mid_Project.git               
                 """, returnStdout: true) 
             }
         }
@@ -50,8 +47,7 @@ pipeline {
         stage('docker push') {
             steps{
                echo "docker push"
-                sh(script: """
-                #docker push aimvector/python:${BUILD_NUMBER}
+                sh(script: """                
                 docker tag productapi:latest '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/productapi:latest
                 docker tag administratorapi:latest '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/administratorapi:latest
                 docker tag demandapi:latest '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/demandapi:latest
@@ -69,16 +65,12 @@ pipeline {
                echo "deploy"
               /*  sh script: '''
                 #!/bin/bash
-                cd $WORKSPACE/Edureka_Mid_Project//
+                cd $WORKSPACE/Edureka_Mid_Project/
                 #get kubectl for this demo
                 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-                chmod +x ./kubectl
+                chmod +x ./kubectl                
                 
-                #./kubectl apply -f ./kubernetes/configmaps/configmap.yaml
-                #./kubectl apply -f ./kubernetes/secrets/secret.yaml
-                #cat ./kubernetes/deployments/deployment.yaml | sed s/1.0.0/${BUILD_NUMBER}/g | ./kubectl apply -f -
-                #./kubectl apply -f ./kubernetes/services/service.yaml               
-                
+                #Deploy kubernates deployment file
                 ./kubectl apply -f ./backend/deploy-product.yml
                 ./kubectl apply -f ./backend/deploy-demand.yml
                 ./kubectl apply -f ./backend/deploy-administrator.yml
