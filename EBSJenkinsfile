@@ -31,8 +31,9 @@ pipeline {
             steps{
                echo "docker build"
                echo "$AWS_DEFAULT_REGION"
-               echo "AWS_S3_BUCKET"
-               echo "ARTIFACT_NAME"
+               echo "--------------------------------------------------"
+               echo "$AWS_S3_BUCKET"
+               echo "$ARTIFACT_NAME"
                 sh script: '''
                 #!/bin/bash
                 echo $WORKSPACE
