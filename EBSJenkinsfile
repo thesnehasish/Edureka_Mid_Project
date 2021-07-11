@@ -41,7 +41,7 @@ pipeline {
                 zip -r webapp.zip ./*
                 mv webapp.zip $WORKSPACE/Edureka_Mid_Project
                 cd $WORKSPACE/Edureka_Mid_Project
-                aws s3 cp webapp.zip s3://'$AWS_S3_BUCKET'/'$ARTIFACT_NAME'
+                aws s3 cp webapp.zip s3://$AWS_S3_BUCKET/$ARTIFACT_NAME
                 rm webapp.zip
                 # docker build . --network host -t aimvector/python:${BUILD_NUMBER}                
                 '''
