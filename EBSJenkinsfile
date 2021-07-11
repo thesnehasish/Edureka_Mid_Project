@@ -5,12 +5,12 @@ pipeline {
        //credentials('jenkins-aws-secret-key-id')
         AWS_SECRET_ACCESS_KEY ='FuKluGW4VZdHnmgltdCCaJJezE/ODCtHx+8PohBj' 
        //credentials('jenkins-aws-secret-access-key')
-        AWS_DEFAULT_REGION ='us-east-1' 
+        AWS_DEFAULT_REGION ='us-east-2' 
        //credentials('jenkins-aws-default-region')       
         AWS_ACCOUNT_ID= '653275020432' 
        //credentials('jenkins-aws-account-id')
        ARTIFACT_NAME = 'webapp.zip'
-       AWS_S3_BUCKET = 'eduelasticbeanstalk-' + '$AWS_DEFAULT_REGION'
+       AWS_S3_BUCKET = 'eduelasticbeanstalk-us-east-2'
        AWS_EB_APP_NAME = 'eduebsApplication'
        AWS_EB_ENVIRONMENT = 'eduebsApplication-env'
        AWS_EB_APP_VERSION = "${BUILD_ID}"
@@ -41,7 +41,7 @@ pipeline {
                 zip -r webapp.zip ./*
                 mv webapp.zip $WORKSPACE/Edureka_Mid_Project
                 cd $WORKSPACE/Edureka_Mid_Project
-                aws s3 cp webapp.zip s3://$AWS_S3_BUCKET/$ARTIFACT_NAME
+                aws s3 cp webapp.zip s3://'$AWS_S3_BUCKET'/'$ARTIFACT_NAME'
                 rm webapp.zip
                 # docker build . --network host -t aimvector/python:${BUILD_NUMBER}                
                 '''
