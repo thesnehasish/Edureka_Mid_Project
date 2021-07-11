@@ -13,7 +13,7 @@ pipeline {
        AWS_S3_BUCKET = 'eduelasticbeanstalk-' + '$AWS_DEFAULT_REGION'
        AWS_EB_APP_NAME = 'eduebsApplication'
        AWS_EB_ENVIRONMENT = 'eduebsApplication-env'
-       AWS_EB_APP_VERSION = "${BUILD_ID}
+       AWS_EB_APP_VERSION = "${BUILD_ID}"
     }
     stages {        
 
@@ -38,7 +38,7 @@ pipeline {
                 zip -r webapp.zip ./*
                 mv $WORKSPACE/Edureka_Mid_Project
                 cd $WORKSPACE/Edureka_Mid_Project
-                aws s3 cp webapp.zip s3://$AWS_S3_BUCKET/$ARTIFACT_NAME
+                aws s3 cp webapp.zip s3://'$AWS_S3_BUCKET'/'$ARTIFACT_NAME'
                 # docker build . --network host -t aimvector/python:${BUILD_NUMBER}                
                 '''
             }
@@ -49,7 +49,7 @@ pipeline {
                echo "deploy"
               /*  sh script: '''
                 #!/bin/bash
-                  aws elasticbeanstalk update-environment --application-name $AWS_EB_APP_NAME --environment-name $AWS_EB_ENVIRONMENT --version-label $AWS_EB_APP_VERSION
+                  aws elasticbeanstalk update-environment --application-name '$AWS_EB_APP_NAME' --environment-name '$AWS_EB_ENVIRONMENT' --version-label '$AWS_EB_APP_VERSION'
                 '''
                 */
         }
