@@ -1,14 +1,10 @@
 pipeline {
    agent any
     environment{
-        AWS_ACCESS_KEY_ID     ='AKIAZQGRZXSIPNBLXEQB'  
-       //credentials('jenkins-aws-secret-key-id')
-        AWS_SECRET_ACCESS_KEY ='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' 
-       //credentials('jenkins-aws-secret-access-key')
-        AWS_DEFAULT_REGION ='us-east-2' 
-       //credentials('jenkins-aws-default-region')       
-        AWS_ACCOUNT_ID= '653275020432' 
-       //credentials('jenkins-aws-account-id')
+       AWS_ACCESS_KEY_ID = credentials('jenkins-aws-secret-key-id')
+       AWS_SECRET_ACCESS_KEY =credentials('jenkins-aws-secret-access-key') 
+       AWS_DEFAULT_REGION ='us-east-2'            
+       AWS_ACCOUNT_ID= '653275020432'
        ARTIFACT_NAME = 'webapp.zip'
        AWS_S3_BUCKET = 'eduelasticbeanstalk-us-east-2'
        AWS_EB_APP_NAME = 'eduebsApplication'
