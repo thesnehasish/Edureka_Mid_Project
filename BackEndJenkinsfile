@@ -1,18 +1,19 @@
 pipeline {
    agent any
     environment{
-        AWS_ACCESS_KEY_ID     ='AKIAZQGRZXSIBLWEWZE6'  
-       //credentials('jenkins-aws-secret-key-id')
+        AWS_ACCESS_KEY_ID = credentials('jenkins-aws-secret-key-id')  
+       //'AKIAZQGRZXSIBLWEWZE6'
         AWS_SECRET_ACCESS_KEY ='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' 
        //credentials('jenkins-aws-secret-access-key')
-        AWS_DEFAULT_REGION ='us-east-1' 
+        AWS_DEFAULT_REGION ='us-east-2' 
        //credentials('jenkins-aws-default-region')       
         AWS_ACCOUNT_ID= '653275020432' 
        //credentials('jenkins-aws-account-id')
     }
     stages {
-        stage('docker login') {
+        stage('docker login') {        
             steps{
+            echo "$AWS_ACCESS_KEY_ID"
                 sh(script: """                 
                 aws ecr get-login-password --region '$AWS_DEFAULT_REGION' | docker login --username AWS --password-stdin '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com
                 """, returnStdout: true) 
