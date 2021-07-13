@@ -15,6 +15,8 @@ pipeline {
 
         stage('git clone') {
             steps{
+               echo "git clone"              
+               echo "--------------------------------------------------"    
                 sh(script: """
                 #Remove old files and clone new files
                 rm -rf Edureka_Mid_Project                
@@ -25,11 +27,8 @@ pipeline {
 
         stage('S3 Upload Zip') {
             steps{
-               echo "docker build"
-               echo "$AWS_DEFAULT_REGION"
-               echo "--------------------------------------------------"
-               echo "$AWS_S3_BUCKET"
-               echo "$ARTIFACT_NAME"
+               echo "Zip the code and Upload Zip into S3"              
+               echo "--------------------------------------------------"               
                 sh script: '''
                 #!/bin/bash
                 echo $WORKSPACE
@@ -47,7 +46,7 @@ pipeline {
         stage('deploy') {
             steps{
                echo "deploy"
-               echo "$AWS_EB_APP_VERSION"
+               echo "--------------------------------------------------"
               /*  sh script: '''
                 #!/bin/bash
                   aws elasticbeanstalk update-environment --application-name '$AWS_EB_APP_NAME' --environment-name '$AWS_EB_ENVIRONMENT' --version-label '$AWS_EB_APP_VERSION'
