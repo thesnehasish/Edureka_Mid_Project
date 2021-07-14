@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: demandapi
-          image: aws_account_id.dkr.ecr.region.amazonaws.com/demandapp:latest
+          image: 653275020432.dkr.ecr.us-east-2.amazonaws.com/demandapi:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
