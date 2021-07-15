@@ -53,6 +53,7 @@ pipeline {
                 sh script: '''
                 #!/bin/bash
                  aws configure set region us-east-2
+                 
                  aws s3 ls
                  aws elasticbeanstalk describe-applications
                  aws elasticbeanstalk describe-environments --environment-names '$AWS_EB_ENVIRONMENT'                 
