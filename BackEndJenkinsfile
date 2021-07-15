@@ -73,6 +73,7 @@ pipeline {
                 chmod +x ./kubectl                
                 
                 #Deploy kubernates deployment file
+                
                 ./kubectl apply -f ./backend/deploy-product.yml
                 ./kubectl apply -f ./backend/deploy-demand.yml
                 ./kubectl apply -f ./backend/deploy-administrator.yml
