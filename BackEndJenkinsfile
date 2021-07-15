@@ -48,7 +48,7 @@ pipeline {
             steps{
                echo "docker push"
                echo "--------------------------------------------------"
-                sh(script: """                
+            /*    sh(script: """                
                 docker tag productapi:latest '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/productapi:latest
                 docker tag administratorapi:latest '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/administratorapi:latest
                 docker tag demandapi:latest '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/demandapi:latest
@@ -56,7 +56,7 @@ pipeline {
                 docker push '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/productapi:latest
                 docker push '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/administratorapi:latest
                 docker push '$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/demandapi:latest
-                """)
+                """) */
                 
             }
         }
