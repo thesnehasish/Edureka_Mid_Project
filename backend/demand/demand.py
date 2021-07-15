@@ -16,10 +16,10 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 class get_all_records(Resource):
     def post(self):
         try: 
-            #dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-            dynamodb = boto3.resource('dynamodb', aws_access_key_id="asdg",
-                          aws_secret_access_key="asdg",
-                          region_name="us-west-2", endpoint_url='http://host.docker.internal:8000')
+            dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
+            #dynamodb = boto3.resource('dynamodb', aws_access_key_id="asdg",
+                          #aws_secret_access_key="asdg",
+                          #region_name="us-west-2", endpoint_url='http://host.docker.internal:8000')
 
             table = dynamodb.Table('demands')
             response = table.scan()
@@ -47,7 +47,7 @@ class new_record(Resource):
 
             print(args['id'],args['quantity'],args['store'])
             try:
-                #dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+                #dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
                 dynamodb = boto3.resource('dynamodb', aws_access_key_id="asdg",
                           aws_secret_access_key="asdg",
                           region_name="us-west-2", endpoint_url='http://host.docker.internal:8000')
