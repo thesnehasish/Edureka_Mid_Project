@@ -4,7 +4,8 @@ pipeline {
         AWS_ACCESS_KEY_ID = credentials('jenkins-aws-secret-key-id')
         AWS_SECRET_ACCESS_KEY =credentials('jenkins-aws-secret-access-key') 
         AWS_DEFAULT_REGION ='us-east-2'            
-        AWS_ACCOUNT_ID= '653275020432'        
+        AWS_ACCOUNT_ID= '653275020432'
+        AWS_CLUSTER_NAME='EKSEduDrive1'
     }
     stages {
         stage('docker login') {        
@@ -68,7 +69,8 @@ pipeline {
                 sh script: '''
                 #!/bin/bash
                 cd $WORKSPACE/Edureka_Mid_Project/
-                #get kubectl for this demo
+                aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name $AWS_CLUSTER_NAME
+                #get kubectl
                 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
                 chmod +x ./kubectl                
                 
