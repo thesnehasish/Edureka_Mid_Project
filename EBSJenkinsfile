@@ -49,6 +49,7 @@ pipeline {
                echo "deploy"
                echo "--------------------------------------------------"
                echo "$AWS_S3_BUCKET"
+               echo "$AWS_EB_ENVIRONMENT"
                 sh script: '''
                 #!/bin/bash
                  aws configure set region us-east-2
