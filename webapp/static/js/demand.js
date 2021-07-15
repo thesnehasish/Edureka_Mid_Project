@@ -7,7 +7,7 @@ $(document).ready(function () {
   function demandList() {
     // Call Web API to get a list of demands
     $.ajax({
-      url: 'http://ab26675081f124c6e8fa6ee85aa2c3fc-618241306.us-east-2.elb.amazonaws.com/getall',
+      url: 'http://ac885e2d7b03940138e9f0b75a94625d-1790366802.us-east-2.elb.amazonaws.com/getall',
       type: 'POST',
       dataType: 'json',
       success: function (demands) {
@@ -54,7 +54,7 @@ $(document).ready(function () {
   function demandAdd(demand) {
     // Call Web API to add a new demand
     $.ajax({
-      url: "http://ab26675081f124c6e8fa6ee85aa2c3fc-618241306.us-east-2.elb.amazonaws.com/new",
+      url: "http://ac885e2d7b03940138e9f0b75a94625d-1790366802.us-east-2.elb.amazonaws.com/new",
       type: 'POST',
       contentType: "application/json;charset=utf-8",
       data:JSON.stringify(demand),
